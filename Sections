@@ -1,0 +1,103 @@
+<div class="page-width page-content">
+  <div class="page-width page-content">
+    <div style="text-align:{{ section.settings.text-align }}; padding:{{ section.settings.padding-top }}px {{ section.settings.padding-right }}px {{ section.settings.padding-bottom }}px {{ section.settings.padding-left }}px" id="{{ section.id }}">
+        {% if section.settings.title != blank %}
+            <h4 style="color: {{ section.settings.color-title }}; font-size:{{ section.settings.title-font-size }}px;">{{ section.settings.title | escape }}</h4>
+        {% endif %}
+        {% if section.settings.text != blank %}
+            <div style="font-size:{{ section.settings.body-font-size }}px;">{{ section.settings.text }}</div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testing Page",
+  	"settings": 
+	[
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+		"default": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+		"default": "<p>Your text here</p>"
+      },
+	  {
+        "type": "color",
+        "id": "color-title",
+        "label": "Title color",
+        "default": "#333333"
+      },
+      {
+        "type": "range",
+        "id": "title-font-size",
+        "min": 4,
+        "max": 68,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Font size",
+        "default": 16
+      },
+	  {
+        "type": "range",
+        "id": "body-font-size",
+        "min": 4,
+        "max": 68,
+        "step": 1,
+        "unit": "px",
+        "label": "Body Font size",
+        "default": 16
+      },
+	  {
+        "type": "select",
+        "id": "text-align",
+        "label": "Text Align",
+        "default": "left",
+        "options": 
+		[
+          {"value": "left","label": "Left"},
+          {"value": "center","label": "Center"},
+		  {"value": "right","label": "Right"}
+        ]
+      },
+	  {
+        "type": "range",
+        "id": "padding-top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 10
+      },
+	  {
+        "type": "range",
+        "id": "padding-bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 10
+      },
+	  {
+        "type": "number",
+        "id": "padding-right",
+        "label": "Padding Right",
+        "default": 10
+      },
+	  {
+        "type": "number",
+        "id": "padding-left",
+        "label": "Padding Left",
+        "default": 10
+      }
+    ]
+}
+{% endschema %}
+
