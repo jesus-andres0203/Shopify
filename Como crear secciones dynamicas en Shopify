@@ -1,0 +1,56 @@
+<div class="page-width page-content">
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'text' %}
+  
+      <div class="text-block" style="background-color:{{ block.settings.background_color }};">
+        
+        {% if block.settings.title != blank %}
+        	<h2>{{ block.settings.title | escape }}</h2>
+        {% endif %}
+        
+        {% if block.settings.text != blank %}
+        	<div>{{ block.settings.text }}</div>
+        {% endif %}
+        
+      </div>
+ 
+    {% endcase %}
+  {% endfor %}
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "Custom Page",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Talk about your brand"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+		{
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
